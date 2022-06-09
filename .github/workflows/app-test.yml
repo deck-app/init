@@ -25,8 +25,10 @@ jobs:
         do 
         sleep 10s
         done
+    - name: Curl check 
+      run: curl -i http://localhost:1234
   IRIS-STACK-ARM64:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image iris
@@ -41,3 +43,5 @@ jobs:
         do 
         sleep 10s
         done
+    - name: Curl check 
+      run: curl -i http://localhost:1234
