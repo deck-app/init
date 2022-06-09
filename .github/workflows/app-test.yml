@@ -46,14 +46,16 @@ jobs:
       run : docker exec iris-stack-iris-1 curl --version
     - name: Git version check
       run: docker exec iris-stack-iris-1 git --version
-    - name: Application check List
-      run: |
-        while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:1234)" != "200" ]]; 
-        do 
-        sleep 10s
-        done
+    # - name: Application check List
+    #   run: |
+    #     while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:1234)" != "200" ]]; 
+    #     do 
+    #     sleep 10s
+    #     done
     - name: Curl check 
-      run: curl -i http://localhost:1234
+      run: |
+        sleep 30s
+        curl -i http://localhost:1234
     - name: Destroy Container and file
       run:  |
         docker-compose down
