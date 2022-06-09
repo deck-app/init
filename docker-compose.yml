@@ -2,12 +2,13 @@ version: '3'
 
 services: 
   iris:
-    build: .
-    volumes: 
-      - '${APP_CODE_PATH_HOST}:/go'
-    args:
+    build: 
+      context: '.'
+      args:
       - 'USER_ID=${USER_ID}'
       - 'GROUP_ID=${GROUP_ID}'
+    volumes: 
+      - '${APP_CODE_PATH_HOST}:/go'
     stdin_open: true
     tty: true
     ports:
