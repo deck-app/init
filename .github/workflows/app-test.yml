@@ -55,7 +55,7 @@ jobs:
     - name: Curl check 
       run: |
         sleep 30s
-        curl -i http://localhost:1234
+        docker exec iris-stack-iris-1 curl -i http://localhost:1234
     - name: Destroy Container and file
       run:  |
         docker-compose down
