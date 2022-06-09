@@ -9,11 +9,35 @@ on:
     branches: [ master ]
 
 jobs:
-  Nginx-PHP81-Mariadb-AMD64:
+  IRIS-STACK-AMD64:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image iris
       run: docker-compose -f "docker-compose.yml" up -d --build
-    - name: curl version check
-      run : docker ps
+    - name: Curl version check
+      run : docker exec iris-stack_iris_1 curl --version
+    - name: Git version check
+      run: docker exec iris-stack_iris_1 git --version
+    - name: Application check List
+      run: |
+        while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:1234)" != "200" ]]; 
+        do 
+        sleep 10s
+        done
+  IRIS-STACK-ARM64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image iris
+      run: docker-compose -f "docker-compose.yml" up -d --build
+    - name: Curl version check
+      run : docker exec iris-stack-iris-1 curl --version
+    - name: Git version check
+      run: docker exec iris-stack-iris-1 git --version
+    - name: Application check List
+      run: |
+        while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:1234)" != "200" ]]; 
+        do 
+        sleep 10s
+        done
