@@ -8,7 +8,9 @@ WORKDIR $GOPATH
 ARG USER_ID
 ARG GROUP_ID
 RUN apk --no-cache add shadow
-RUN usermod -u ${USER_ID} root && groupmod -g ${GROUP_ID} root
+RUN addgroup -g ${GROUP_ID} deck
+RUN adduser -u ${USER_ID} -G deck -h /home/deck -D deck
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
+USER deck
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
