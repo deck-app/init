@@ -7,10 +7,11 @@ ENV GOPATH /go
 WORKDIR $GOPATH
 ARG USER_ID
 ARG GROUP_ID
-RUN apk --no-cache add shadow
+RUN apk --no-cache add shadow sudo
 RUN addgroup -g ${GROUP_ID} deck
 RUN adduser -u ${USER_ID} -G deck -h /home/deck -D deck
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
-USER deck
+RUN sed -i "s#{USER_ID}#${USER_ID}#g" /docker-entrypoint.sh
+RUN sed -i "s#{GROUP_ID}#${GROUP_ID}#g" /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
