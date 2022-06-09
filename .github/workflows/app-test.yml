@@ -1,0 +1,19 @@
+name: IRIS Stack
+
+on:
+  schedule:
+  - cron:  '30 4 * * *'
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  Nginx-PHP81-Mariadb-AMD64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image iris
+      run: docker-compose -f "docker-compose.yml" up -d --build
+    - name: curl version check
+      run : docker ps
