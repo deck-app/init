@@ -4,8 +4,8 @@ services:
   iris:
     build: .
     volumes: 
-      - '{APP_CODE_PATH_HOST}:/go'
+      - '${APP_CODE_PATH_HOST}:/go'
     stdin_open: true
     tty: true
     ports:
-      - '{IRIS_HTTP_PORT}:8080'
+      - '${IRIS_HTTP_PORT}:8080'
