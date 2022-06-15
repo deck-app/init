@@ -6,7 +6,7 @@
 
 ### Using DECK
 
-Install iris-stack from the DECK marketplace and follow the instructions on the GUI
+Install iris-stack from the DECK marketplace and follow the instructions on the GUI.
 
 ### From terminal with Docker
 
@@ -20,11 +20,11 @@ docker-compose up -d
 ```
 ### Modifying project settings
 From the DECK app, go to stack list and click on desired project and click on `More > configure > Advanced configuration`
-Follow the instructions below and restart your stack from the GUI
+Follow the instructions below and restart your stack from the GUI.
 
 #### Rebuilding from terminal
 
-You have to rebuild the Docker image after you make any changes to the project configuration. Use the snippet below to rebuild and restart the stack
+You have to rebuild the Docker image after you make any changes to the project configuration. Use the snippet below to rebuild and restart the stack.
 
 ```
 docker-compose stop && docker-compose up --build -d
