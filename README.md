@@ -1,6 +1,6 @@
 # Iris stack
 
-> Iris project with Alpine linux Iris is a fast, simple yet fully featured and very efficient web framework for Go. Super easy to get started and running in a few mins
+> Iris project with Alpine Linux. Iris is a fast, simple yet fully featured and very efficient web framework for Go programming language. Super easy to get started and running in a few mins.
 
 ## Install
 
@@ -19,12 +19,12 @@ cd iris-stack
 docker-compose up -d
 ```
 ### Modifying project settings
-From the DECK app, go to stack list and click on project's `More > configure > Advanced configuration`
+From the DECK app, go to stack list and click on desired project and click on `More > configure > Advanced configuration`
 Follow the instructions below and restart your stack from the GUI
 
 #### Rebuilding from terminal
 
-You have to rebuild the docker image after you make any changes to the project configuration, use the snippet below to rebuild and restart the stack
+You have to rebuild the Docker image after you make any changes to the project configuration. Use the snippet below to rebuild and restart the stack
 
 ```
 docker-compose stop && docker-compose up --build -d
