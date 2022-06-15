@@ -34,31 +34,4 @@ jobs:
         docker-compose down
         echo "y" | docker image prune -a
         sudo rm -rf /tmp/app
-  IRIS-STACK-ARM64:
-    runs-on: self-hosted
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image iris
-      run: docker-compose -f "docker-compose.yml" up -d --build
-      env:
-        APP_CODE_PATH_HOST: /tmp/app
-        IRIS_HTTP_PORT: "9753"
-    - name: Curl version check
-      run : docker exec iris-stack-iris-1 curl --version
-    - name: Git version check
-      run: docker exec iris-stack-iris-1 git --version
-    - name: Application check List
-      run: |
-        while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:9753)" != "200" ]]; 
-        do 
-        sleep 10s
-        done
-    - name: Curl check 
-      run: |
-        sleep 30s
-        curl -i http://localhost:9753
-    - name: Destroy Container and file
-      run:  |
-        docker-compose down
-        echo "y" | docker system prune -a
-        sudo rm -rf /tmp/app
+  
